@@ -103,6 +103,13 @@ git pull --rebase origin main
 git push origin main
 ```
 
+## 网络请求代理规则（通用）
+
+- 所有发起的网络请求（HTTP/HTTPS）必须走本地代理，代理地址：`http://127.0.0.1:8888`
+- curl 请求加参数：`curl -x http://127.0.0.1:8888 ...` 或设置环境变量 `export https_proxy=http://127.0.0.1:8888 http_proxy=http://127.0.0.1:8888`
+- Python 请求（requests/httpx 等）需显式配置 proxies，或在执行命令前导出上述环境变量
+- 适用于取数、抓取、API 调用等一切外部网络访问，包括但不限于台股 FinMind 取数、star history、汇率/股价查询等
+
 ## 注意事项
 
 - 市值必须手算校验：股价 × 总股本，与报告市值对比
